@@ -20,12 +20,12 @@ describe('sortProductsByPrice', () => {
     expect(result.map((p) => p.id)).toEqual([1, 2, 4, 5, 6, 3]);
   });
   test("товары [3, 1, 4] c 'desc' сортируются как [1, 4, 3]", () => {
-    const selectedProducts = products.filter(({ id }) => [3, 1, 4].includes(id));
+    const selectedProducts = [3, 1, 4].map((id) => products.find((product) => product.id === id));
     const result = sortProductsByPrice(selectedProducts, 'desc');
     expect(result.map((p) => p.id)).toEqual([1, 4, 3]);
   });
   test("товары [5, 2, 6] c 'desc' сортируются как [2, 5, 6]", () => {
-    const selectedProducts = products.filter(({ id }) => [5, 2, 6].includes(id));
+    const selectedProducts = [5, 2, 6].map((id) => products.find((product) => product.id === id));
     const result = sortProductsByPrice(selectedProducts, 'desc');
     expect(result.map((p) => p.id)).toEqual([2, 5, 6]);
   });
